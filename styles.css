@@ -1,0 +1,27 @@
+.card {
+    width: 300px;
+    height: auto;
+    margin: 10px;
+    border: 5px solid coral;
+    padding: 10px;
+    display: inline-block;
+    background-color: pink;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: coral;   
+    text-align: center;
+    font-size: 40px;
+
+}
+
+button {
+    background-color: palegreen;
+    border-color: palegreen;
+}
+
+body {
+    background-color: lightblue;
+}
