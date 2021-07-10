@@ -10,9 +10,9 @@ function Book(title, author, pages, read) {
 
 let myLibrary = [];
 
-const harry = new Book("harry potter", "jk rowlling", 500, "not read");
-const percy = new Book("percy jackson", "rick riordan", 250, "read");
-const hunger = new Book("hunger games", "susan collines", 300, "not read");
+const harry = new Book("Harry Potter", "JK Rowling", 500, "not read");
+const percy = new Book("Percy Jackson", "Rick Riordan", 250, "read");
+const hunger = new Book("Hunger Games", "Susan Collins", 300, "not read");
 
 function addBookToLibrary(Book) {
   myLibrary.push(Book);
@@ -37,25 +37,27 @@ function populateCards(arr) {
     card.setAttribute("data", `${i}`);
     card.setAttribute("class", "card");
 
-    const title = document.createElement("div");
+    const title = document.createElement("h3");
     title.setAttribute("class", "title");
-    title.textContent = "Title: " + arr[i].title;
+    title.textContent =  arr[i].title;
 
     const author = document.createElement("div");
     author.setAttribute("class", "author");
-    author.textContent = "Author: " + arr[i].author;
+    author.textContent = "By: " + arr[i].author;
 
     const pages = document.createElement("div");
     pages.setAttribute("class", "pages");
-    pages.textContent = "Pages: " + arr[i].pages;
+    pages.textContent = arr[i].pages + " pages";
 
-    const read = document.createElement("div");
-    read.setAttribute("class", "read");
+    const read = document.createElement("button");
+    read.setAttribute("class", "card-button");
+    read.setAttribute("id","read");
     read.textContent = arr[i].read;
 
     const remove = document.createElement("button");
-    remove.setAttribute("class", "remove");
-    remove.textContent = "X";
+    remove.setAttribute("class", "card-button");
+    remove.setAttribute("id", "remove");
+    remove.textContent = "Remove";
     remove.addEventListener("click", () => {
       removeBook(i);
     });
