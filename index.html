@@ -17,19 +17,22 @@
       <div class="modal-content">
         <form id="myForm" class="form">
           <div class="close">+</div>
-          <label for="title">Book Title:</label>
-          <input type="text" name="title" id="title" placeholder="Title" />
-          <label for="author">Name of Author:</label>
-          <input type="text" name="author" id="author" placeholder="Author" />
-          <label for="pages">Number of Pages:</label>
-          <input type="text" name="pages" id="pages" placeholder="# of pages" />
-          <label for="finished">Finished or Still Reading?</label>
+          <label for="formTitle">Book Title</label>
+          <input type="text" name="formTitle" id="formTitle" placeholder="Title" />
+          <label for="formAuthor">Name of Author</label>
+          <input type="text" name="formAuthor" id="formAuthor" placeholder="Author" />
+          <label for="formPages">Number of Pages</label>
+          <input type="text" name="formPages" id="formPages" placeholder="# of pages" />
           <input
-            type="text"
-            name="finished"
-            id="finished"
-            placeholder="type 'finished or 'unfinished'"
+            type="radio"
+            name="formFinished"
+            id="formFinished"
+            value='finished'
+            
           />
+          <label for="finished">Finished</label>
+          <input type='radio' name='formFinished' id='stillReading' value='stillReading'>
+          <label for='stillReading'>Still Reading</label> <br />
           <button id="submit">Submit</a>
         </form>
       </div>

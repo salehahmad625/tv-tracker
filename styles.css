@@ -80,17 +80,31 @@ body {
 
 .modal-content {
     width: 500px;
-    height: 300px;
+    height: 350px;
     background-color: white;
     border-radius: 4px;
     text-align: center;
-    position: relative;
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
-input {
-    width: 50%;
+input[type=text] {
+    width: 250px;
     display: block;
     margin: 10px auto;
+}
+
+input[type=radio] {
+    display: inline-block;
+    margin: 20px auto;
+}
+
+label[for=finished]
+{
+    margin-right: 15px;
 }
 
 .close {
@@ -100,4 +114,9 @@ input {
     font-size: 42px;
     transform: rotate(45deg);
     cursor: pointer;
+}
+
+label {
+    font-family: monospace;
+    font-size: 16px;
 }

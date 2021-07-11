@@ -84,17 +84,6 @@ function populateCards(arr) {
 
 const addBook = document.querySelector("#add");
 
-/*addBook.addEventListener("click", () => {
-  let boo = prompt("Name of book?");
-  let name = prompt("Name of author?");
-  let pages = parseInt(prompt("Number of pages?"));
-  let status = prompt("Finished or still reading?");
-
-  const bookie = new Book(boo, name, pages, status);
-  addBookToLibrary(bookie);
-  populateCards(myLibrary);
-});*/
-
 populateCards(myLibrary);
 
 addBook.addEventListener('click', () => {
@@ -110,10 +99,16 @@ closePopUp.addEventListener('click', () => {
 const submit = document.getElementById('submit');
 submit.addEventListener('click', (event) => {
   event.preventDefault();
-  let title = document.getElementById('title').value;
-  let author = document.getElementById('author').value;
-  let pages = document.getElementById('pages').value;
-  let finished = document.getElementById('finished').value;
+  let title = document.getElementById('formTitle').value;
+  let author = document.getElementById('formAuthor').value;
+  let pages = document.getElementById('formPages').value;
+  let finished = 0;
+  if(document.getElementById('formFinished').checked) {
+    finished = document.getElementById('formFinished').value;
+  } 
+  else {
+    finished = document.getElementById('stillReading').value;
+  }
   const bookie = new Book(title,author,pages,finished);
   document.querySelector('.bg-modal').style.display = 'none';
   addBookToLibrary(bookie);
