@@ -84,8 +84,6 @@ function populateCards(arr) {
 
 const addBook = document.querySelector("#add");
 
-populateCards(myLibrary);
-
 addBook.addEventListener('click', () => {
   document.querySelector('.bg-modal').style.display = 'flex';
 });
