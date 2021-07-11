@@ -10,16 +10,9 @@ function Book(title, author, pages, read) {
 
 let myLibrary = [];
 
-const harry = new Book("Harry Potter", "JK Rowling", 500, "not read");
-const percy = new Book("Percy Jackson", "Rick Riordan", 250, "read");
-const hunger = new Book("Hunger Games", "Susan Collins", 300, "not read");
-
 function addBookToLibrary(Book) {
   myLibrary.push(Book);
 }
-addBookToLibrary(harry);
-addBookToLibrary(percy);
-addBookToLibrary(hunger);
 
 function removeBook(num) {
   myLibrary.splice(num, 1);
@@ -51,8 +44,25 @@ function populateCards(arr) {
 
     const read = document.createElement("button");
     read.setAttribute("class", "card-button");
-    read.setAttribute("id","read");
-    read.textContent = arr[i].read;
+    read.setAttribute("id", 'status');
+    if(arr[i].read.toLowerCase() !== 'finished')
+    {
+      read.classList.add("class","unread");
+      read.textContent = 'Still reading'
+    }
+    else {
+      read.textContent = 'Finished'
+    }
+    read.addEventListener('click', () => {
+      read.classList.toggle('unread');
+      if(read.classList.contains('unread'))
+      {
+        read.textContent = 'Still reading';
+      }
+      else {
+        read.textContent = 'Finished';
+      }
+    })
 
     const remove = document.createElement("button");
     remove.setAttribute("class", "card-button");
@@ -74,15 +84,38 @@ function populateCards(arr) {
 
 const addBook = document.querySelector("#add");
 
-addBook.addEventListener("click", () => {
+/*addBook.addEventListener("click", () => {
   let boo = prompt("Name of book?");
   let name = prompt("Name of author?");
   let pages = parseInt(prompt("Number of pages?"));
-  let status = prompt("Read or not read yet?");
+  let status = prompt("Finished or still reading?");
 
   const bookie = new Book(boo, name, pages, status);
   addBookToLibrary(bookie);
   populateCards(myLibrary);
-});
+});*/
 
 populateCards(myLibrary);
+
+addBook.addEventListener('click', () => {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+const closePopUp = document.querySelector('.close');
+
+closePopUp.addEventListener('click', () => {
+  document.querySelector('.bg-modal').style.display = 'none';
+});
+
+const submit = document.getElementById('submit');
+submit.addEventListener('click', (event) => {
+  event.preventDefault();
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  let finished = document.getElementById('finished').value;
+  const bookie = new Book(title,author,pages,finished);
+  document.querySelector('.bg-modal').style.display = 'none';
+  addBookToLibrary(bookie);
+  populateCards(myLibrary);
+});
