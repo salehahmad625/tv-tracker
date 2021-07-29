@@ -1,11 +1,13 @@
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  info() {
     return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`;
-  };
+  }
 }
 
 let myLibrary = [];
@@ -32,7 +34,7 @@ function populateCards(arr) {
 
     const title = document.createElement("h3");
     title.setAttribute("class", "title");
-    title.textContent =  arr[i].title;
+    title.textContent = arr[i].title;
 
     const author = document.createElement("div");
     author.setAttribute("class", "author");
@@ -44,25 +46,21 @@ function populateCards(arr) {
 
     const read = document.createElement("button");
     read.setAttribute("class", "card-button");
-    read.setAttribute("id", 'status');
-    if(arr[i].read.toLowerCase() !== 'finished')
-    {
-      read.classList.add("class","unread");
-      read.textContent = 'Still reading'
+    read.setAttribute("id", "status");
+    if (arr[i].read.toLowerCase() !== "finished") {
+      read.classList.add("class", "unread");
+      read.textContent = "Still reading";
+    } else {
+      read.textContent = "Finished";
     }
-    else {
-      read.textContent = 'Finished'
-    }
-    read.addEventListener('click', () => {
-      read.classList.toggle('unread');
-      if(read.classList.contains('unread'))
-      {
-        read.textContent = 'Still reading';
+    read.addEventListener("click", () => {
+      read.classList.toggle("unread");
+      if (read.classList.contains("unread")) {
+        read.textContent = "Still reading";
+      } else {
+        read.textContent = "Finished";
       }
-      else {
-        read.textContent = 'Finished';
-      }
-    })
+    });
 
     const remove = document.createElement("button");
     remove.setAttribute("class", "card-button");
@@ -84,31 +82,30 @@ function populateCards(arr) {
 
 const addBook = document.querySelector("#add");
 
-addBook.addEventListener('click', () => {
-  document.querySelector('.bg-modal').style.display = 'flex';
+addBook.addEventListener("click", () => {
+  document.querySelector(".bg-modal").style.display = "flex";
 });
 
-const closePopUp = document.querySelector('.close');
+const closePopUp = document.querySelector(".close");
 
-closePopUp.addEventListener('click', () => {
-  document.querySelector('.bg-modal').style.display = 'none';
+closePopUp.addEventListener("click", () => {
+  document.querySelector(".bg-modal").style.display = "none";
 });
 
-const submit = document.getElementById('submit');
-submit.addEventListener('click', (event) => {
+const submit = document.getElementById("submit");
+submit.addEventListener("click", (event) => {
   event.preventDefault();
-  let title = document.getElementById('formTitle').value;
-  let author = document.getElementById('formAuthor').value;
-  let pages = document.getElementById('formPages').value;
+  let title = document.getElementById("formTitle").value;
+  let author = document.getElementById("formAuthor").value;
+  let pages = document.getElementById("formPages").value;
   let finished = 0;
-  if(document.getElementById('formFinished').checked) {
-    finished = document.getElementById('formFinished').value;
-  } 
-  else {
-    finished = document.getElementById('stillReading').value;
+  if (document.getElementById("formFinished").checked) {
+    finished = document.getElementById("formFinished").value;
+  } else {
+    finished = document.getElementById("stillReading").value;
   }
-  const bookie = new Book(title,author,pages,finished);
-  document.querySelector('.bg-modal').style.display = 'none';
+  const bookie = new Book(title, author, pages, finished);
+  document.querySelector(".bg-modal").style.display = "none";
   addBookToLibrary(bookie);
   populateCards(myLibrary);
 });
