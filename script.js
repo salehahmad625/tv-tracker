@@ -62,19 +62,19 @@ function populateCards(arr) {
       }
     });
 
-    const remove = document.createElement("button");
-    remove.setAttribute("class", "card-button");
-    remove.setAttribute("id", "remove");
-    remove.textContent = "Remove";
+    const remove = document.createElement("div");
+    remove.setAttribute("class", "card-remove");
+    remove.textContent = "+";
     remove.addEventListener("click", () => {
       removeBook(i);
     });
 
+    card.appendChild(remove);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
     card.appendChild(read);
-    card.appendChild(remove);
+  
 
     cont.appendChild(card);
   }
@@ -92,8 +92,8 @@ closePopUp.addEventListener("click", () => {
   document.querySelector(".bg-modal").style.display = "none";
 });
 
-const submit = document.getElementById("submit");
-submit.addEventListener("click", (event) => {
+const form = document.getElementById("myForm");
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   let title = document.getElementById("formTitle").value;
   let author = document.getElementById("formAuthor").value;

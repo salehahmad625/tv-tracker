@@ -18,11 +18,11 @@
         <form id="myForm" class="form">
           <div class="close">+</div>
           <label for="formTitle">Book Title</label>
-          <input type="text" name="formTitle" id="formTitle" placeholder="Title" required />
+          <input type="text" name="formTitle" id="formTitle" placeholder="Title" required>
           <label for="formAuthor">Name of Author</label>
-          <input type="text" name="formAuthor" id="formAuthor" placeholder="Author" />
+          <input type="text" name="formAuthor" id="formAuthor" placeholder="Author" required>
           <label for="formPages">Number of Pages</label>
-          <input type="text" name="formPages" id="formPages" placeholder="# of pages" />
+          <input type="number" name="formPages" id="formPages" placeholder="# of pages" required>
           <input
             type="radio"
             name="formFinished"
@@ -31,7 +31,7 @@
             
           />
           <label for="finished">Finished</label>
-          <input type='radio' name='formFinished' id='stillReading' value='stillReading'>
+          <input type='radio' name='formFinished' id='stillReading' value='stillReading' required>
           <label for='stillReading'>Still Reading</label> <br />
           <button id="submit">Submit</button>
         </form>

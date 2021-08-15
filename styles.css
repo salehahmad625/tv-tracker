@@ -11,6 +11,14 @@ body {
     display: inline-block;
     background-color: pink;
     border-radius: 10px;
+    font-family:monospace;
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+}
+
+.card-container {
+    display: block;
 }
 
 .buttons-container {
@@ -29,13 +37,6 @@ body {
     background-color: palegreen;
     border-color: palegreen;
 }
-
-.card {
-    font-family:monospace;
-    font-size: 18px;
-    text-align: center;
-}
-
 
 h1 {
     font-family: monospace;
@@ -62,6 +63,16 @@ body {
     margin: 10px;
     background-color: palegreen;
     border-color: palegreen;
+}
+
+.card-remove {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+    float:right;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
 }
 
 
@@ -96,6 +107,12 @@ body {
 }
 
 input[type=text] {
+    width: 250px;
+    display: block;
+    margin: 10px auto;
+}
+
+input[type=number] {
     width: 250px;
     display: block;
     margin: 10px auto;
