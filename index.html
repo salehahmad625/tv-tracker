@@ -10,29 +10,24 @@
   <body>
     <h1>My Library</h1>
     <div class="buttons-container">
-      <button id="add">Add Book</button>
+      <button id="add">Add Show</button>
     </div>
     <div class="card-container"></div>
     <div class="bg-modal">
       <div class="modal-content">
         <form id="myForm" class="form">
           <div class="close">+</div>
-          <label for="formTitle">Book Title</label>
+          <label for="formTitle">Show Title</label>
           <input type="text" name="formTitle" id="formTitle" placeholder="Title" required>
-          <label for="formAuthor">Name of Author</label>
-          <input type="text" name="formAuthor" id="formAuthor" placeholder="Author" required>
-          <label for="formPages">Number of Pages</label>
-          <input type="number" name="formPages" id="formPages" placeholder="# of pages" required>
           <input
             type="radio"
             name="formFinished"
             id="formFinished"
             value='finished'
-            
           />
           <label for="finished">Finished</label>
-          <input type='radio' name='formFinished' id='stillReading' value='stillReading' required>
-          <label for='stillReading'>Still Reading</label> <br />
+          <input type='radio' name='formFinished' id='stillWatching' value='stillWatching' required>
+          <label for='stillWatching'>Still Watching</label> <br />
           <button id="submit">Submit</button>
         </form>
       </div>
