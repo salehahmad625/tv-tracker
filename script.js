@@ -1,4 +1,4 @@
-import {findShow} from './searchAPI.js'
+import { fetchShows, displayDropdown, clearDropdown } from "./searchAPI.js";
 
 let showsArr = [];
 
@@ -66,7 +66,6 @@ function populateCards(arr) {
     card.appendChild(remove);
     card.appendChild(title);
     card.appendChild(read);
-  
 
     cont.appendChild(card);
   }
@@ -101,12 +100,15 @@ form.addEventListener("submit", (event) => {
 });
 
 const searchedTitle = document.getElementById("formTitle");
-
-form.addEventListener("submit", (e) => {
+searchedTitle.addEventListener("keyup", (e) => {
   e.preventDefault();
   showsArr = [];
+  clearDropdown();
   let name = searchedTitle.value;
   console.log(name);
-  findShow(name, showsArr);
-  console.log(showsArr);
+  console.log(fetchShows(name, showsArr));
 });
+
+/*form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});*/

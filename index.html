@@ -18,16 +18,32 @@
         <form id="myForm" class="form">
           <div class="close">+</div>
           <label for="formTitle">Show Title</label>
-          <input type="text" name="formTitle" id="formTitle" placeholder="Title" required>
+          <input
+            type="text"
+            name="formTitle"
+            id="formTitle"
+            placeholder="Title"
+            required
+          />
+          <div id="dropdown">
+            <div id="dropdown-content"></div>
+          </div>
+          <div id="selection"></div>
           <input
             type="radio"
             name="formFinished"
             id="formFinished"
-            value='finished'
+            value="finished"
           />
           <label for="finished">Finished</label>
-          <input type='radio' name='formFinished' id='stillWatching' value='stillWatching' required>
-          <label for='stillWatching'>Still Watching</label> <br />
+          <input
+            type="radio"
+            name="formFinished"
+            id="stillWatching"
+            value="stillWatching"
+            required
+          />
+          <label for="stillWatching">Still Watching</label> <br />
           <button id="submit">Submit</button>
         </form>
       </div>
