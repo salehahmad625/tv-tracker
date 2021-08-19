@@ -1,3 +1,7 @@
+import {findShow} from './searchAPI.js'
+
+let showsArr = [];
+
 class Show {
   constructor(title, read) {
     this.title = title;
@@ -94,4 +98,15 @@ form.addEventListener("submit", (event) => {
   document.querySelector(".bg-modal").style.display = "none";
   addShowToLibrary(newShow);
   populateCards(myLibrary);
+});
+
+const searchedTitle = document.getElementById("formTitle");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  showsArr = [];
+  let name = searchedTitle.value;
+  console.log(name);
+  findShow(name, showsArr);
+  console.log(showsArr);
 });
