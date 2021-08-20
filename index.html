@@ -8,46 +8,16 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>My Library</h1>
-    <div class="buttons-container">
-      <button id="add">Add Show</button>
-    </div>
-    <div class="card-container"></div>
-    <div class="bg-modal">
-      <div class="modal-content">
-        <form id="myForm" class="form">
-          <div class="close">+</div>
-          <label for="formTitle">Show Title</label>
-          <input
-            type="text"
-            name="formTitle"
-            id="formTitle"
-            placeholder="Title"
-            required
-          />
-          <div id="dropdown">
-            <div id="dropdown-content"></div>
-          </div>
-          <div id="selection"></div>
-          <input
-            type="radio"
-            name="formFinished"
-            id="formFinished"
-            value="finished"
-          />
-          <label for="finished">Finished</label>
-          <input
-            type="radio"
-            name="formFinished"
-            id="stillWatching"
-            value="stillWatching"
-            required
-          />
-          <label for="stillWatching">Still Watching</label> <br />
-          <button id="submit">Submit</button>
+    <div class="navbar">
+      <h1>TV Tracker</h1>
+      <div class="search-container">
+        <form id="myForm">
+          <input type="text" id="search-bar" placeholder="Search for shows!" />
         </form>
+        <div id="dropdown-content"></div>
       </div>
     </div>
+    <div class="card-container"></div>
   </body>
   <script type="module" src="script.js"></script>
   <script type="module" src="searchAPI.js"></script>

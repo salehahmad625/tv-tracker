@@ -8,11 +8,22 @@ async function fetchShows(title, arr) {
       arr.push({
         name: item.show.name,
         pic: item.show.image.medium,
+        id: item.show.id,
       });
     }
   });
   displayDropdown(arr);
   return arr;
+}
+
+async function fetchSeasonEpisodeNumber(obj) {
+  const response = await fetch(
+    "https://api.tvmaze.com/shows/" + `${obj.id}` + "/seasons"
+  );
+  const seasonList = await response.json();
+  const season = seasonList[seasonList.length - 1].number;
+  const episodes = seasonList[seasonList.length - 1].episodeOrder;
+  return "S" + `${season}` + " " + "E" + `${episodes}`;
 }
 
 function clearDropdown() {
@@ -23,6 +34,7 @@ function clearDropdown() {
 function displayDropdown(arr) {
   let dropContent = document.getElementById("dropdown-content");
   arr.forEach((show) => {
+    // console.log(fetchSeasonEpisodeNumber(show));
     let option = document.createElement("div");
     option.setAttribute("class", "option-div");
 
@@ -39,11 +51,16 @@ function displayDropdown(arr) {
     title.textContent = name;
     title.setAttribute("class", "option-title");
 
+    // let info = document.createElement("h3");
+    // info.textContent = fetchSeasonEpisodeNumber(show);
+    // info.setAttribute("class", "option-info");
+
     option.appendChild(image);
     option.appendChild(title);
+    // option.appendChild(info);
 
     dropContent.appendChild(option);
   });
 }
 
-export { fetchShows, displayDropdown, clearDropdown };
+export { fetchShows, displayDropdown, clearDropdown, fetchSeasonEpisodeNumber };
