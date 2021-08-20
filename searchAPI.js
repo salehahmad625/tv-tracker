@@ -23,7 +23,8 @@ async function fetchSeasonEpisodeNumber(obj) {
   const seasonList = await response.json();
   const season = seasonList[seasonList.length - 1].number;
   const episodes = seasonList[seasonList.length - 1].episodeOrder;
-  return "S" + `${season}` + " " + "E" + `${episodes}`;
+  const info = "S" + `${season}` + " " + "E" + `${episodes}`;
+  return info;
 }
 
 function clearDropdown() {
@@ -31,10 +32,9 @@ function clearDropdown() {
   node.querySelectorAll("*").forEach((n) => n.remove());
 }
 
-function displayDropdown(arr) {
+async function displayDropdown(arr) {
   let dropContent = document.getElementById("dropdown-content");
   arr.forEach((show) => {
-    // console.log(fetchSeasonEpisodeNumber(show));
     let option = document.createElement("div");
     option.setAttribute("class", "option-div");
 
@@ -51,13 +51,13 @@ function displayDropdown(arr) {
     title.textContent = name;
     title.setAttribute("class", "option-title");
 
-    // let info = document.createElement("h3");
-    // info.textContent = fetchSeasonEpisodeNumber(show);
-    // info.setAttribute("class", "option-info");
+    let info = document.createElement("h3");
+    info.textContent = season;
+    info.setAttribute("class", "option-info");
 
     option.appendChild(image);
     option.appendChild(title);
-    // option.appendChild(info);
+    option.appendChild(info);
 
     dropContent.appendChild(option);
   });
