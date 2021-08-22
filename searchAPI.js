@@ -23,7 +23,7 @@ async function fetchSeasonEpisodeNumber(obj) {
   const seasonList = await response.json();
   const season = seasonList[seasonList.length - 1].number;
   const episodes = seasonList[seasonList.length - 1].episodeOrder;
-  const info = "S" + `${season}` + " " + "E" + `${episodes}`;
+  const info = "S" + `${season}` + "•" + "E" + `${episodes}`;
   return info;
 }
 
@@ -32,32 +32,47 @@ function clearDropdown() {
   node.querySelectorAll("*").forEach((n) => n.remove());
 }
 
-async function displayDropdown(arr) {
+function displayDropdown(arr) {
   let dropContent = document.getElementById("dropdown-content");
-  arr.forEach((show) => {
+  arr.forEach(async (show) => {
+    const stuff = await fetchSeasonEpisodeNumber(show);
+
     let option = document.createElement("div");
     option.setAttribute("class", "option-div");
 
+    option.addEventListener("click", (event) => {
+      event.stopPropagation(); //stops propagation to document so the document click doesnt fire
+      console.log(event.currentTarget);
+      // dropContent.style.display = "none";
+    });
+
     let pic = show.pic;
     let name = show.name;
+    let data = show.id;
 
     option.setAttribute("id", name);
+    option.setAttribute("data", data);
 
     let image = document.createElement("img");
     image.setAttribute("src", pic);
     image.setAttribute("class", "option-img");
 
-    let title = document.createElement("h3");
+    let desc = document.createElement("div");
+    desc.setAttribute("class", "option-desc");
+
+    let title = document.createElement("span");
     title.textContent = name;
     title.setAttribute("class", "option-title");
 
-    let info = document.createElement("h3");
-    info.textContent = season;
+    let info = document.createElement("span");
+    info.textContent = stuff;
     info.setAttribute("class", "option-info");
 
+    desc.appendChild(title);
+    desc.appendChild(info);
+
     option.appendChild(image);
-    option.appendChild(title);
-    option.appendChild(info);
+    option.appendChild(desc);
 
     dropContent.appendChild(option);
   });
