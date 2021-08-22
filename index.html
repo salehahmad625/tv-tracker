@@ -11,13 +11,35 @@
     <div class="navbar">
       <h1>TV Tracker</h1>
       <div class="search-container">
-        <form id="myForm">
+        <form id="myForm" onsubmit="return false;">
           <input type="text" id="search-bar" placeholder="Search for shows!" />
         </form>
         <div id="dropdown-content"></div>
       </div>
     </div>
     <div class="card-container"></div>
+    <div class="bg-modal">
+      <div class="modal-content">
+        <div class="close">+</div>
+        <h2 class="info-name"></h2>
+        <img class="info-pic" alt="picture" />
+        <p class="info-summary"></p>
+        <p class="info-service"></p>
+        <!-- <form id="watchForm">
+          <input
+            type="radio"
+            name="unwatched"
+            id="unwatched"
+            value="unwatched"
+          />
+          <label for="unwatched">Unwatched</label>
+          <input type="radio" name="watching" id="watching" value="watching" />
+          <label for="watching">Watching</label>
+          <input type="radio" name="finished" id="finished" value="finished" />
+          <label for="finished">Finished</label>
+        </form> -->
+      </div>
+    </div>
 
     <script type="module" src="script.js"></script>
     <script type="module" src="searchAPI.js"></script>

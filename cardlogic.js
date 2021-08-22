@@ -1,66 +1,64 @@
-class Show {
-  constructor(title, read) {
-    this.title = title;
-    this.read = read;
-  }
-  info() {
-    return `${this.title}, ${this.read}`;
-  }
-}
+import * as search from "./searchAPI.js";
 
 function addShowToLibrary(show, libArr) {
   libArr.push(show);
 }
 
-function removeShow(num, libArr) {
-  libArr.splice(num, 1);
-  populateCards(libArr);
-}
-
-function populateCards(arr) {
-  let node = document.querySelector(".card-container");
-  node.querySelectorAll("*").forEach((n) => n.remove());
-
-  for (let i = 0; i < arr.length; i++) {
-    const cont = document.querySelector(".card-container");
-
-    const card = document.createElement("div");
-    card.setAttribute("data", `${i}`);
-    card.setAttribute("class", "card");
-
-    const title = document.createElement("h3");
-    title.setAttribute("class", "title");
-    title.textContent = arr[i].title;
-
-    const read = document.createElement("button");
-    read.setAttribute("class", "card-button");
-    read.setAttribute("id", "status");
-    if (arr[i].read.toLowerCase() !== "finished") {
-      read.classList.add("class", "unread");
-      read.textContent = "Still watching";
-    } else {
-      read.textContent = "Finished";
+function removeShow(id, libArr) {
+  for (let i = 0; i < libArr.length; i++) {
+    if (libArr[i].id == id) {
+      libArr.splice(i, 1);
     }
-    read.addEventListener("click", () => {
-      read.classList.toggle("unread");
-      if (read.classList.contains("unread")) {
-        read.textContent = "Still watching";
-      } else {
-        read.textContent = "Finished";
-      }
-    });
-
-    const remove = document.createElement("div");
-    remove.setAttribute("class", "card-remove");
-    remove.textContent = "+";
-    remove.addEventListener("click", () => {
-      removeShow(i);
-    });
-
-    card.appendChild(remove);
-    card.appendChild(title);
-    card.appendChild(read);
-
-    cont.appendChild(card);
   }
+  // libArr.splice(num, 1);
 }
+
+function addCardToDisplay(obj, arr) {
+  const cont = document.querySelector(".card-container");
+
+  const card = document.createElement("div");
+  card.setAttribute("data", `${obj.name}`);
+  card.setAttribute("class", "card");
+
+  const cardContent = document.createElement("div");
+  cardContent.setAttribute("class", "card-content");
+
+  const title = document.createElement("h3");
+  title.setAttribute("class", "card-title");
+  title.textContent = obj.name;
+
+  const img = document.createElement("img");
+  img.setAttribute("src", obj.pic);
+  img.setAttribute("class", "card-pic");
+
+  img.addEventListener("click", (e) => {
+    console.log(e.target);
+    console.log(obj.id);
+    search.fetchShowInfo(obj.id);
+  });
+
+  const channel = document.createElement("span");
+  channel.setAttribute("class", "card-channel");
+  channel.textContent = obj.service;
+
+  const remove = document.createElement("div");
+  remove.setAttribute("class", "card-remove");
+  remove.textContent = "+";
+  remove.addEventListener("click", () => {
+    console.log(arr);
+    removeShow(obj.id, arr);
+    console.log(arr);
+    card.remove();
+  });
+
+  cardContent.appendChild(remove);
+  cardContent.appendChild(title);
+  cardContent.appendChild(img);
+  cardContent.appendChild(channel);
+
+  card.appendChild(cardContent);
+
+  cont.appendChild(card);
+}
+
+export { removeShow, addShowToLibrary, addCardToDisplay };
