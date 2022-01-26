@@ -66,13 +66,13 @@ function displayInfo(infoArr, showsArr) {
   const service = document.querySelector(".info-service");
   service.textContent = "Watch on: " + infoArr[0].service;
 
-  let exists = false;
+  let existsInLib = false;
   for (let show of showsArr) {
     if (show.id == infoArr[0].id) {
-      exists = true;
+      existsInLib = true;
     }
   }
-  if (!exists && document.querySelector(".add-show") == null) {
+  if (!existsInLib && document.querySelector(".add-show") === null) {
     const addShow = document.createElement("button");
     addShow.setAttribute("class", "add-show");
     addShow.textContent = "Add Show+";
