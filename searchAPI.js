@@ -72,7 +72,7 @@ function displayInfo(infoArr, showsArr) {
       exists = true;
     }
   }
-  if (!exists) {
+  if (!exists && document.querySelector(".add-show") == null) {
     const addShow = document.createElement("button");
     addShow.setAttribute("class", "add-show");
     addShow.textContent = "Add Show+";
